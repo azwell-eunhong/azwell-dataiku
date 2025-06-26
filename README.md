@@ -37,9 +37,15 @@ sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
   flex \
   openssl-devel \
   libuuid-devel \
-  libicu-devel
+  libicu-devel \
+  
 ```
 
+## postgresql17-server.x86_64 파일 내용
+
+```
+sudo yum install -y --downloadonly postgresql17-server.x86_64
+```
 ## etc.tar 파일 내용
 
 ```
