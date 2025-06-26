@@ -1,7 +1,7 @@
 # azwell-dataiku
 
 
-
+ß
 <pre>
 아래 명령어를 통해서 다운 로드 받았습니다
 
@@ -24,7 +24,7 @@ sha256sum -c etc.tar.sum
 ## dev-tools.tar.gz 파일 내용
 
 ```
-sudo yum groupinstall --y --downloadonly --downloaddir=./dev-tools
+sudo yum groupinstall --y --downloadonly --downloaddir=./dev-tools  "Development Tools"
 ```
 
 ## postgresql-install.tar 파일 내용
