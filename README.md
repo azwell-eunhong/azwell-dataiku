@@ -34,7 +34,7 @@ sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
 
 ## etc.tar 파일 내용
 ```
-sudo yum reinstall -y --downloadonly --downloaddir=./etc \
+sudo yum install -y --downloadonly --downloaddir=./etc \
  acl \
  expat \
  git \
