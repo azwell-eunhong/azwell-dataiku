@@ -10,6 +10,7 @@
 	sha256sum -c etc.tar.sum
 
 </ore>
+
 ```
 sudo yum groupinstall --y --downloadonly --downloaddir=./dev-tools
 ```
