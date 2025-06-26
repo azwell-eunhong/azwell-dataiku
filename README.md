@@ -1,7 +1,6 @@
 # azwell-dataiku
 
 
-ß
 <pre>
 아래 명령어를 통해서 다운 로드 받았습니다
 
