@@ -1,0 +1,9 @@
+   
+71K   acl-2.3.1-2.amzn2023.0.2.x86_64.rpm
+121K   expat-2.6.3-1.amzn2023.0.2.x86_64.rpm
+423K   freetype-2.13.2-5.amzn2023.0.1.x86_64.rpm
+15M   gcc-gfortran-11.5.0-5.amzn2023.0.4.x86_64.rpm
+52K   git-2.47.1-1.amzn2023.0.3.x86_64.rpm
+33K   nginx-1.26.3-1.amzn2023.0.1.x86_64.rpm
+182K   unzip-6.0-57.amzn2023.0.2.x86_64.rpm
+257K   zip-3.0-28.amzn2023.0.2.x86_64.rpm
