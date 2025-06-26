@@ -45,6 +45,7 @@ nginx -v
 
 ## EPEL 또는 nginx 공식 repo 추가 (Amazon Linux 2 & AL2023 가능)
 
+```
 sudo tee /etc/yum.repos.d/nginx.repo <<EOF
 [nginx-stable]
 name=nginx stable repo
@@ -53,8 +54,13 @@ gpgcheck=1
 enabled=1
 gpgkey=https://nginx.org/keys/nginx_signing.key
 EOF
+```
 
+nginx install
+```
 sudo yum install -y nginx
+```
+
 
 ## nginx start
 
