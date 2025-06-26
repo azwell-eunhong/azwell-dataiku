@@ -28,6 +28,7 @@ sudo yum groupinstall -y --downloadonly --downloaddir=./dev-tools  "Development 
 ```
 
 ## postgresql-install.tar 파일 내용
+
 ```
 sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
   readline-devel \
@@ -40,6 +41,7 @@ sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
 ```
 
 ## etc.tar 파일 내용
+
 ```
 sudo yum install -y --downloadonly --downloaddir=./etc \
  acl \
