@@ -24,7 +24,7 @@ sha256sum -c etc.tar.sum
 ## dev-tools.tar.gz 파일 내용
 
 ```
-sudo yum groupinstall --y --downloadonly --downloaddir=./dev-tools  "Development Tools"
+sudo yum groupinstall -y --downloadonly --downloaddir=./dev-tools  "Development Tools"
 ```
 
 ## postgresql-install.tar 파일 내용
