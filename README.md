@@ -5,8 +5,11 @@
 	sum 파일은 checksum 파일입니다.
 	sha256 으로 인코딩 했습니다.
 	아래와 같이 하시면 'OK' 가 나오면 정상적으로 받으신 것입니다.
+
 	sha256sum -c dev-tools.tar.gz.sum
+
 	sha256sum -c postgresql-install.tar.sum
+	
 	sha256sum -c etc.tar.sum
 
 </ore>
