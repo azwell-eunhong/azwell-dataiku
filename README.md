@@ -84,7 +84,27 @@ Postgresql v17.5
 
 <pre>
 https://ftp.postgresql.org/pub/source/v17.5/
+
 </pre>
+
+패키지 다운로드
+
+```
+curl -LO https://ftp.postgresql.org/pub/source/v17.5/postgresql-17.5.tar.gz
+
+```
+
+checksum 다운로드
+
+```
+https://ftp.postgresql.org/pub/source/v17.5/postgresql-17.5.tar.gz.sha256
+```
+
+파일 정합성 체크
+
+```
+sha256sum -c postgresql-17.5.tar.gz.sha256
+```
 
 
 ## amazon corretto java version 17
