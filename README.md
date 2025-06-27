@@ -87,4 +87,35 @@ https://ftp.postgresql.org/pub/source/v17.5/
 </pre>
 
 
+## amazon corretto java version 17
+
+<pre>
+  자바 설치를 위한 공식 문서는 아래와 같습니다
+  https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/downloads-list.html
+</pre> 
+
+<a href="https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.rpm"> java rpm package </a>
+
+설치는 rpm 다운로드 디렉 토리에서 실행 하시면 됩니다.
+
+```
+curl -LO https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.rpm
+```
+
+```
+sudo yum localinstall -y --nogpgcheck amazon-corretto-17-x64-linux-jdk.rpm
+```
+
+
+java version check
+
+```
+java -version
+```
+
+<pre>
+  openjdk version "17.0.15" 2025-04-15 LTS
+  OpenJDK Runtime Environment Corretto-17.0.15.6.1 (build 17.0.15+6-LTS)
+  OpenJDK 64-Bit Server VM Corretto-17.0.15.6.1 (build 17.0.15+6-LTS, mixed mode, sharing)
+</pre>
 
