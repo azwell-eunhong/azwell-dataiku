@@ -81,7 +81,7 @@ curl -LO https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha2
 
 파일 정합성 체크
 
-Dataiku gz 파일 압축을 푼 후에 실행
+Dataiku gz 파일 압축을 푼 후 실행
 
 ```
 sha256sum -c dataiku-dss-13.5.5-sha256sums.txt
