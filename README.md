@@ -12,6 +12,9 @@ sha256 으로 인코딩 했습니다.
  
 아래와 같이 하시면 'OK' 가 나오면 정상적으로 받으신 것입니다.
 
+sha256sum -c dev-tools.sum
+
+sha256sum -c etc.sum
 
 </pre>
 
