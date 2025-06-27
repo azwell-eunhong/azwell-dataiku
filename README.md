@@ -16,14 +16,14 @@ sha256sum -c dev-tools.sum
 
 sha256sum -c etc.sum
 
-package list는
-
-etc.txt
-dev-tools.txt 
-
-파일을 확인 하시기 바랍니다.
 
 </pre>
+package list 는 아래 파일을 확인 하시기 바랍니다.
+
+[etc.txt](./packages/etc.txt)
+
+[dev-tools.txt](./packages/dev-tools.txt) 
+
 
 ## dev-tools directory 파일 내용
 
