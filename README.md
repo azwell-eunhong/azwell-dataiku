@@ -6,7 +6,7 @@
 
 sum 파일은 checksum 파일입니다.
   
-packaages 하위 디렉토리에 설치 패키지 들이 있습니다.
+packages 하위 디렉토리에 설치 패키지 들이 있습니다.
 
 checksum은 sha256 으로 인코딩 했습니다.
  
