@@ -66,6 +66,28 @@ binary : https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5.tar.
 checksum : https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha256sums.txt
 </pre>
 
+패키지 다운로드
+
+```
+curl -LO https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5.tar.gz
+
+```
+
+checksum 다운로드
+
+```
+curl -LO https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha256sums.txt
+```
+
+파일 정합성 체크
+
+Dataiku gz 파일 압축을 푼 후에 실행
+
+```
+sha256sum -c dataiku-dss-13.5.5-sha256sums.txt
+```
+
+
 ### plugin 다운로드 링크
 <a href="https://downloads.dataiku.com/public/dss-plugins/"> dataiku plugin root directory </a>
 
