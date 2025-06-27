@@ -12,44 +12,28 @@ sha256 으로 인코딩 했습니다.
  
 아래와 같이 하시면 'OK' 가 나오면 정상적으로 받으신 것입니다.
 
-sha256sum -c dev-tools.tar.gz.sum
-
-sha256sum -c postgresql-install.tar.sum
-
-sha256sum -c etc.tar.sum
 
 </pre>
 
-## dev-tools.tar.gz 파일 내용
+## dev-tools directory 파일 내용
 
 ```
 sudo yum groupinstall -y --downloadonly --downloaddir=./dev-tools  "Development Tools"
 ```
 
-## postgresql-install.tar 파일 내용
-
-```
-sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
-  readline-devel \
-  zlib-devel \
-  bison \
-  flex \
-  openssl-devel \
-  libuuid-devel \
-  libicu-devel \
-  
 ```
 
-## postgresql17-server.x86_64 파일 내용
-
-```
-sudo yum install -y --downloadonly --downloaddir=./postgresql-server \
-  postgresql17-server.x86_64
-```
-## etc.tar 파일 내용
+## etc directory 파일 내용
 
 ```
 sudo yum install -y --downloadonly --downloaddir=./etc \
+ readline-devel \
+ zlib-devel \
+ bison \
+ flex \
+ openssl-devel \
+ libuuid-devel \
+ libicu-devel \
  acl \
  expat \
  git \
