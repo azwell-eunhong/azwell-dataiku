@@ -24,7 +24,6 @@ sha256sum -c etc.sum
 sudo yum groupinstall -y --downloadonly --downloaddir=./dev-tools  "Development Tools"
 ```
 
-```
 
 ## etc directory 파일 내용
 
