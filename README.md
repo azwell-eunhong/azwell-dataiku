@@ -1,7 +1,6 @@
 # azwell-dataiku
 
 
-ß
 <pre>
 아래 명령어를 통해서 다운 로드 받았습니다
 
@@ -44,7 +43,8 @@ sudo yum install -y --downloadonly --downloaddir=./postgresql-install \
 ## postgresql17-server.x86_64 파일 내용
 
 ```
-sudo yum install -y --downloadonly postgresql17-server.x86_64
+sudo yum install -y --downloadonly --downloaddir=./postgresql-server \
+  postgresql17-server.x86_64
 ```
 ## etc.tar 파일 내용
 
