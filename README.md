@@ -197,3 +197,9 @@ library 목록
 [Libraries 디렉토리](./packages/python-lib)
 
 [checksum file](./packages/python-lib.sum)
+
+checksum 확인
+
+```
+sha256sum -c python-lib.sum
+```
