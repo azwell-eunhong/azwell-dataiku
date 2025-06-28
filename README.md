@@ -166,31 +166,8 @@ java -version
 
 설치 또는 Dataiku 사용에 필요한 라이브러리 파일들
 
-req.txt
+[req.txt](./packages/req.txt) 
 
-```
-pandas>=2.2,<2.3
-numpy<1.27
-python-dateutil >=2.8.2,<3
-urllib3<2
-requests<3
-decorator==5.1.1
-ipykernel==6.23.3
-ipython>=8.12,<8.13
-ipython_genutils==0.2.0
-jupyter_client==6.1.12
-jupyter_core==4.12.0
-pexpect==4.8.0
-pickleshare==0.7.5
-ptyprocess==0.7.0
-pyzmq==23.2.1
-simplegeneric==0.8.1
-tornado>=6.3,<6.4
-traitlets==5.9.0
-```
-
-
-library 목록
 
 [python libraries list](./packages/python-lib.txt) 
 
