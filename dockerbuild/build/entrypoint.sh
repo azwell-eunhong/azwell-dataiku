@@ -60,7 +60,7 @@ install_dss() {
 upgrade_dss() {
     echo "🔄 Upgrading DSS..."
     if [ -z "${DSS_VERSION}" ]; then
-        echo "DSS version not specified. Using default: ${DSS_VERSION}"
+        echo "DSS version not specified."
         exit 1
     else
         echo "Installing DSS version: DSS_VERSION=${DSS_VERSION}"
@@ -69,7 +69,7 @@ upgrade_dss() {
         NODE_TYPE="design"
         echo "DSS version not specified. Using default: ${NODE_TYPE}"
     else
-        echo "Installing DSS version: DSS_VERSION=${DSS_VERSION}" NODE_TYPE="${NODE_TYPE}"
+        echo "Installing DSS version: NODE_TYPE="${NODE_TYPE}"
     fi    
     ./dataiku-dss-${DSS_VERSION}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -u -y
     
