@@ -1,4 +1,4 @@
-FROM dataiku-base:v14.0.0
+FROM dataiku-base:v13.5.5
 
 ## DSS
 ## NODE_TYPE : api : api node
