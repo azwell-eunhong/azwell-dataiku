@@ -59,7 +59,7 @@ install_dss() {
     ${DSS_HOME}/bin/dssadmin install-graphics-export
 }
 upgrade_dss() {
-    echo "🔄 Upgrading DSS..."
+    echo "Upgrading DSS..."
     if [ -z "${DSS_VERSION}" ]; then
         echo "DSS version not specified."
         exit 1
