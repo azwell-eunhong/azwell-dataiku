@@ -55,8 +55,8 @@ install_dss() {
         echo "Installing DSS version: DSS_VERSION=${DSS_VERSION}" NODE_TYPE="${NODE_TYPE}"
     fi    
     ./dataiku-dss-${DSS_VERSION}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -p 11000
-    ./${DSS_HOME}/bin/dssadmin install-graphics-export
-    start_dss
+    $DSS_HOME/bin/dssadmin install-R-integration
+    ${DSS_HOME}/bin/dssadmin install-graphics-export
 }
 upgrade_dss() {
     echo "🔄 Upgrading DSS..."
@@ -73,7 +73,8 @@ upgrade_dss() {
         echo "Installing DSS version: NODE_TYPE="${NODE_TYPE}"
     fi    
     ./dataiku-dss-${DSS_VERSION}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -u -y
-    ./${DSS_HOME}/bin/dssadmin install-graphics-export
+    $DSS_HOME/bin/dssadmin install-R-integration
+    ${DSS_HOME}/bin/dssadmin install-graphics-export
     
  }
 
@@ -92,9 +93,11 @@ case "$1" in
         ;;
     install)
         install_dss
+        start_dss
         ;;  
     upgrade)
         upgrade_dss
+        start_dss
         ;; 
     *)
         echo "Usage: $0 {start|stop|restart|health}"
