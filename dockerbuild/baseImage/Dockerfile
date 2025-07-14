@@ -27,6 +27,18 @@ RUN dnf install -y \
     glibc-langpack-en \
     libgfortran \
     libgomp \
+    liberation-fonts \
+    xorg-x11-fonts-100dpi \
+    xorg-x11-fonts-75dpi \
+    xorg-x11-fonts-Type1 \
+    xorg-x11-utils \
+    xorg-x11-fonts-cyrillic \
+    xorg-x11-server-Xvfb \
+    npm \
+    gtk3 \
+    libXScrnSaver \
+    mesa-libgbm \
+    libX11-xcb \
     tar && \
     dnf clean all
 

@@ -55,6 +55,7 @@ install_dss() {
         echo "Installing DSS version: DSS_VERSION=${DSS_VERSION}" NODE_TYPE="${NODE_TYPE}"
     fi    
     ./dataiku-dss-${DSS_VERSION}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -p 11000
+    ./${DSS_HOME}/bin/dssadmin install-graphics-export
     start_dss
 }
 upgrade_dss() {
@@ -72,6 +73,7 @@ upgrade_dss() {
         echo "Installing DSS version: DSS_VERSION=${DSS_VERSION}" NODE_TYPE="${NODE_TYPE}"
     fi    
     ./dataiku-dss-${DSS_VERSION}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -u -y
+    ./${DSS_HOME}/bin/dssadmin install-graphics-export
     
  }
 
