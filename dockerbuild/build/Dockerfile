@@ -1,4 +1,4 @@
-FROM dataiku-base:v14.0.0
+FROM dss-base:v1
 
 ## DSS
 ## NODE_TYPE : api : api node
@@ -22,5 +22,3 @@ RUN echo "DSS_VERSION=${DSS_VERSION}" > config.env && \
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start"]
-
-
