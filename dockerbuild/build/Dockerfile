@@ -1,4 +1,4 @@
-FROM dss-base:v1
+FROM dss-engine:v1
 
 ## DSS
 ## NODE_TYPE : api : api node

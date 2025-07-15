@@ -12,7 +12,9 @@ ENV DSS_HOME=/data/dss_data
 RUN mkdir -p /data/dss_data && \
     useradd -u 5001 dataiku -s /bin/bash
 
-RUN dnf install -y \
+RUN dnf install -y epel-release && \
+    dnf config-manager --set-enabled powertools && \
+    dnf install -y \
     acl \
     expat \
     git \
@@ -35,14 +37,17 @@ RUN dnf install -y \
     xorg-x11-fonts-cyrillic \
     xorg-x11-server-Xvfb \
     npm \
+    R-core-devel \
+    libicu-devel \
+    libcurl-devel \
+    openssl-devel \
+    libxml2-devel \
     gtk3 \
     libXScrnSaver \
     mesa-libgbm \
     libX11-xcb \
     tar && \
     dnf clean all
-
-
 #COPY entrypoint.sh /entrypoint.sh
 #RUN chmod a+x /entrypoint.sh    
 
@@ -52,9 +57,11 @@ USER dataiku
 
 RUN wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}.tar.gz && \
     wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}-sha256sums.txt && \
-    sha256sum -c dataiku-dss-${DSS_VERSION}-sha256sums.txt 2>&1 | grep "OK" && \
     tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
-    rm -f dataiku-dss-${DSS_VERSION}.tar.gz dataiku-dss-${DSS_VERSION}-sha256sums.txt
+    mv dataiku-dss-${DSS_VERSION}-sha256sums.txt dataiku-dss-${DSS_VERSION} && \
+    cd dataiku-dss-${DSS_VERSION} && \
+    sha256sum -c dataiku-dss-${DSS_VERSION}-sha256sums.txt 2>&1 | grep "OK" && \
+    rm -f dataiku-dss-${DSS_VERSION}.tar.gz
 
 ENV PATH="/usr/bin:$PATH"
 ENV PYTHON_BIN=python3.9
