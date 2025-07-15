@@ -14,7 +14,8 @@ dss_design
 
 ### license file upload
 <pre>
-	lidense 파일은 license.json 파일명으로 Dockerfile 과 동일한 위치에 저장
+	lidense 파일은 docker 실행 시에 volume mount 를 통해서 실행 license.json 
+	-v license.json:/data/dss_data/config/license.json
 </pre>
 
 ### base image build
@@ -24,31 +25,53 @@ dss_design
 	base os 를 변경이 필요할 경우 각 os 별 필수 설치 패키지 확인 
 </pre>
 
-```
-docker build --build-arg DSS_VERSION=13.5.5 -t dataiku-base:v13.5.5 .
-```
-
-
-### 각 버젼별 dss_install
-Dockerfile 내의 
-<B>"FROM dataiku-base:v13.5.5"</B>
-부분을 위 baseimage 명으로 변경
-
-```
-docker build --build-arg DSS_VERSION=13.5.5 --build-arg NODE_TYPE=design -t dss-design:13.5.5 .
-```
-
-dataiku install
-
-```
-docker run -id --name dss13 -v dss_design:/data -p 8181:11000 dss-design:13.5.5 install
-```
-
-dataiku upgrade
 <pre>
-	upgrade 전에 docker process 에서 사용하는 volume 의 물리 파일을 백업
-</pre>
+
+	## NODE_TYPE : api : api node
+	##           : automation : automation node
+	##           : design : design node
+
+	parameters
+	ARG DSS_VERSION=13.5.5
+	ARG NODE_TYPE=design
+
+	ENV NODE_TYPE=${NODE_TYPE}
+	ENV DSS_VERSION=${DSS_VERSION}
+	ENV DSS_HOME=/data/dss_data
+	ENV DSS_INSTALLDIR=/data/dataiku-dss-${DSS_VERSION}
+	ENV DSS_PORT=11000
+
+	dataiku user
+	uid : 5001
+	gid : 5001
+
+
 
 ```
-docker run -id --name dss13 -v dss_design:/data -p 8181:11000 dss-design:13.5.5 upgrade
+docker build --build-arg DSS_VERSION=13.5.5 --build-arg NODE_TYPE=design -t dss-engine:v13.5.5 .
 ```
+
+
+### dataiku start
+Dockerfile 내의 
+<B>docker run 시 "start" parameter 입력</B>
+
+
+```
+docker run -id --name dss-design -v dss_design:/data -v license.json:/data/data_dss/config/license.json -p 8181:11000 dss-engine:v13.5.5 start
+```
+
+### version upgrade
+
+```
+docker rm -f dss-design
+```
+
+```
+docker build --build-arg DSS_VERSION=14.0.0 --build-arg NODE_TYPE=design -t dss-engine:v14.0.0 .
+```
+
+```
+docker run -id --name dss-design -v dss_design:/data -v license.json:/data/data_dss/config/license.json -p 8181:11000 dss-engine:v14.0.0 start
+```
+
