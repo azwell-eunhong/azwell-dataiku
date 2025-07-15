@@ -6,9 +6,13 @@ FROM almalinux/8-base AS base
 ##           : design : design node
 
 ARG DSS_VERSION=13.5.5
+ARG NODE_TYPE=design
+
+ENV NODE_TYPE=${NODE_TYPE}
 ENV DSS_VERSION=${DSS_VERSION}
 ENV DSS_HOME=/data/dss_data
 ENV DSS_INSTALLDIR=/data/dataiku-dss-${DSS_VERSION}
+ENV DSS_PORT=11000
 
 RUN mkdir -p /data/dss_data && \
     useradd -u 5001 dataiku -s /bin/bash
@@ -49,8 +53,9 @@ RUN dnf install -y epel-release && \
     libX11-xcb \
     tar && \
     dnf clean all
-#COPY entrypoint.sh /entrypoint.sh
-#RUN chmod a+x /entrypoint.sh    
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod a+x /entrypoint.sh    
 
 RUN chown -R dataiku:dataiku /data
 WORKDIR /data
@@ -67,14 +72,12 @@ RUN wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${D
 ENV PATH="/usr/bin:$PATH"
 ENV PYTHON_BIN=python3.9
 
-#FROM base AS dss
-#RUN ./dataiku-dss-${DSS_VERSION}/installer.sh -t design -d ${DSS_HOME} -p 11000 
+RUN echo "DSS_VERSION=${DSS_VERSION}" > config.env && \
+    echo "NODE_TYPE=${NODE_TYPE}" >> config.env &&\
+    echo "DSS_INSTALLDIR=${DSS_INSTALLDIR}" >> config.env &&\
+    echo "DSS_HOME=${DSS_HOME}" >> config.env &&\
+    echo "DSS_PORT=${DSS_PORT}" >> config.env 
 
-#FROM base AS api
-#RUN ./dataiku-dss-${DSS_VERSION}/installer.sh -t api -d ${DSS_HOME} -p 11000 
-
-#FROM base AS automation
-#RUN ./dataiku-dss-${DSS_VERSION}/installer.sh -t automation -d ${DSS_HOME} -p 11000 
-
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["start"]
 
