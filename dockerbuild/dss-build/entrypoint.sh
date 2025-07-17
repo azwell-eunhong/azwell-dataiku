@@ -1,15 +1,28 @@
 #!/bin/bash
 set -e
 echo "Starting Dataiku DSS entrypoint script..."
-
+echo "Usage: $0 {start}"
+echo "Usage: NODE_TYPE : api : api node
+                             : automation : automation node
+                             : design : design node
+     $0 {start} {api|automation:design default: design}
+}
+docker run <iamge> start design|automation|api
+"
 
 source config.env
 echo "DSS Version: ${DSS_VERSION}"
-echo "Node Type: ${NODE_TYPE}"
 echo "DSS_INSTALLDIR: ${DSS_INSTALLDIR}"
 echo "DSS_HOME: ${DSS_HOME}"
 echo "DSS_PORT: ${DSS_PORT}"
 
+if [ -z $2 ];then
+    NODE_TYPE=${NODE_TYPE}
+else
+    NODE_TYPE=$2
+fi
+
+echo "Node Type:::::: ${NODE_TYPE}"
 DSS_HOME=${DSS_HOME}
 DSS_INSTALLDIR=${DSS_INSTALLDIR}
 DSS_VERSION=${DSS_VERSION}
@@ -22,8 +35,12 @@ start_dss() {
     if [ ! -f ${DSS_HOME}/bin/env-default.sh ]; then
             # Initialize new data directory
             ${DSS_INSTALLDIR}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -p ${DSS_PORT}
-#            ${DSS_HOME}/bin/dssadmin install-R-integration
-            ${DSS_HOME}/bin/dssadmin install-graphics-export
+
+        if [ "api" != ${NODE_TYPE} ];then
+#               ${DSS_HOME}/bin/dssadmin install-R-integration
+                ${DSS_HOME}/bin/dssadmin install-graphics-export
+        fi
+
             echo "dku.registration.channel=docker-image" >>${DSS_HOME}/config/dip.properties
             echo "dku.exports.chrome.sandbox=false" >>${DSS_HOME}/config/dip.properties
 
@@ -31,9 +48,16 @@ start_dss() {
             # Upgrade existing data directory
             rm -rf "$DSS_DATADIR"/pyenv
             ${DSS_INSTALLDIR}/installer.sh -t ${NODE_TYPE} -d ${DSS_HOME} -u -y
-#            ${DSS_HOME}/bin/dssadmin install-R-integration
-            ${DSS_HOME}/bin/dssadmin install-graphics-export
+        if [ "api" != ${NODE_TYPE} ];then
+#                ${DSS_HOME}/bin/dssadmin install-R-integration
+             ${DSS_HOME}/bin/dssadmin install-graphics-export
+            fi
     fi
+    echo "license copy........................"
+    cp /data/license.json /data/dss_data/config/license.json
+
+    chown -Rh $(id -u):$(id -g) /data/dss_data
+
     ${DSS_HOME}/bin/dss start
     ${DSS_HOME}/bin/dss status
     tail -f ${DSS_HOME}/run/install.log
@@ -151,4 +175,5 @@ case "$1" in
         exit 1
         ;;
 esac
+
 

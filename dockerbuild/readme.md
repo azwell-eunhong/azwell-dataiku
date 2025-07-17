@@ -15,7 +15,7 @@ dss_design
 ### license file upload
 <pre>
 	lidense 파일은 docker 실행 시에 volume mount 를 통해서 실행 license.json 
-	-v license.json:/data/dss_data/config/license.json
+	-v license.json:/data/
 </pre>
 
 ### base image build
@@ -48,7 +48,7 @@ dss_design
 
 
 ```
-docker build --build-arg DSS_VERSION=13.5.5 --build-arg NODE_TYPE=design -t dss-engine:v13.5.5 .
+docker build --build-arg DSS_VERSION=13.5.5 -t dss-engine:v13.5.5 .
 ```
 
 
@@ -56,10 +56,12 @@ docker build --build-arg DSS_VERSION=13.5.5 --build-arg NODE_TYPE=design -t dss-
 Dockerfile 내의 
 <B>docker run 시 "start" parameter 입력</B>
 
+design node install/upgrade/start
+```
+docker run -id --name dss-design -v dss_design:/data -v ./license.json:/data/license.json:ro -p 8181:11000 dss-engine:13.5.5 start design
+```
 
-```
-docker run -id --name dss-design -v dss_design:/data -v license.json:/data/data_dss/config/license.json -p 8181:11000 dss-engine:v13.5.5 start
-```
+최초 설치 시에 DSS_HOME 디렉토리에 파일이 있을 경우 설치 에러가 나기때문에 license 파일을 /data 디렉토리에 mount
 
 ### version upgrade
 
@@ -67,11 +69,19 @@ docker run -id --name dss-design -v dss_design:/data -v license.json:/data/data_
 docker rm -f dss-design
 ```
 
+
 ```
-docker build --build-arg DSS_VERSION=14.0.0 --build-arg NODE_TYPE=design -t dss-engine:v14.0.0 .
+docker build --build-arg DSS_VERSION=14.0.0 -t dss-engine:14.0.0 .
 ```
 
 ```
-docker run -id --name dss-design -v dss_design:/data -v license.json:/data/data_dss/config/license.json -p 8181:11000 dss-engine:v14.0.0 start
+docker run -id --name dss-design -v dss_design:/data -v ./license.json:/data/license.json:ro -p 8181:11000 dss-engine:14.0.0 start design
 ```
+
+entrypoint.sh 파일내에 아래와 같은 코드로 license 파일 복사 처리
+
+<pre>
+    echo "license copy........................"
+    cp /data/license.json /data/dss_data/config/license.json
+</pre>
 

@@ -57,17 +57,29 @@ RUN dnf install -y epel-release && \
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh    
 
+COPY dataiku-dss-${DSS_VERSION}.tar.gz /data
+COPY dataiku-dss-${DSS_VERSION}-sha256sums.txt /data
+
 RUN chown -R dataiku:dataiku /data
+
 WORKDIR /data
 USER dataiku
 
-RUN wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}.tar.gz && \
-    wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}-sha256sums.txt && \
-    tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
+
+RUN tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
     mv dataiku-dss-${DSS_VERSION}-sha256sums.txt dataiku-dss-${DSS_VERSION} && \
     cd dataiku-dss-${DSS_VERSION} && \
     sha256sum -c dataiku-dss-${DSS_VERSION}-sha256sums.txt 2>&1 | grep "OK" && \
     rm -f dataiku-dss-${DSS_VERSION}.tar.gz
+
+
+#RUN wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}.tar.gz && \
+#    wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}-sha256sums.txt && \
+#    tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
+#    mv dataiku-dss-${DSS_VERSION}-sha256sums.txt dataiku-dss-${DSS_VERSION} && \
+#    cd dataiku-dss-${DSS_VERSION} && \
+#    sha256sum -c dataiku-dss-${DSS_VERSION}-sha256sums.txt 2>&1 | grep "OK" && \
+#    rm -f dataiku-dss-${DSS_VERSION}.tar.gz
 
 ENV PATH="/usr/bin:$PATH"
 ENV PYTHON_BIN=python3.9
@@ -80,4 +92,5 @@ RUN echo "DSS_VERSION=${DSS_VERSION}" > config.env && \
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start"]
+
 
