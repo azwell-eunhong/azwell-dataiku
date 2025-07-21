@@ -57,26 +57,26 @@ sudo yum install -y --downloadonly --downloaddir=./etc \
 
 ### Dataiku 13.5.5 다운로드 링크
 
-<a href="https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5.tar.gz"> dataiku 13.5.5</a>
+<a href="https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1.tar.gz"> dataiku 14.0.1</a>
 
-<a href="https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha256sums.txt">dataiku-dss-13.5.5-sha256sums.txt</a>
+<a href="https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1-sha256sums.txt">dataiku-dss-14.0.1-sha256sums.txt</a>
 <pre>
-binary : https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5.tar.gz
+binary : https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1.tar.gz
 
-checksum : https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha256sums.txt
+checksum : https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1-sha256sums.txt
 </pre>
 
 패키지 다운로드
 
 ```
-curl -LO https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5.tar.gz
+curl -LO https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1.tar.gz
 
 ```
 
 checksum 다운로드
 
 ```
-curl -LO https://downloads.dataiku.com/public/dss/13.5.5/dataiku-dss-13.5.5-sha256sums.txt
+curl -LO https://downloads.dataiku.com/public/dss/14.0.1/dataiku-dss-14.0.1-sha256sums.txt
 ```
 
 파일 정합성 체크

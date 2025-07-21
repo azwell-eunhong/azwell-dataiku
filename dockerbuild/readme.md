@@ -4,8 +4,8 @@
 docker volume create \
 -d local \
 -o type=none \
--o device=/mnt/volume-mount \
--o o=bind
+-o device=/mnt/volume-mount/{directory} \
+-o o=bind \
 dss_design
 
 
