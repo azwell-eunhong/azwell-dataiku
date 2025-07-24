@@ -72,7 +72,7 @@ RUN tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
     sha256sum -c dataiku-dss-${DSS_VERSION}-sha256sums.txt 2>&1 | grep "OK" && \
     rm -f dataiku-dss-${DSS_VERSION}.tar.gz
 
-
+  
 #RUN wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}.tar.gz && \
 #    wget https://downloads.dataiku.com/public/dss/${DSS_VERSION}/dataiku-dss-${DSS_VERSION}-sha256sums.txt && \
 #    tar xzf dataiku-dss-${DSS_VERSION}.tar.gz && \
